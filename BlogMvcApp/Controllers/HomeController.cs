@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlogMvcApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,11 @@ namespace BlogMvcApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            BlogContext context = new BlogContext();
+
+            List<Blog> blogs = context.Blogs.Where(b => b.IsActive == true).ToList();
+
+            return View(blogs);
         }
     }
 }
