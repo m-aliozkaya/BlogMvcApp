@@ -4,12 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Blog Listesi</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Blog Ekle", "Create", null, new {@class = "btn btn-primary" })
 </p>
-<table class="table">
+<table class="table table-bordered table-responsive table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Category.Name)
@@ -59,15 +59,28 @@
             @Html.DisplayFor(modelItem => item.CreatedDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsValid)
+            @if (item.IsValid)
+            {
+                <span class="badge badge-success">Valid</span>
+            }
+            else
+            {
+                <span class="badge badge-danger">Invalid</span>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
+            @if (item.IsActive)
+            {
+                <span class="badge badge-success">Active</span>
+            } else
+            {
+                <span class="badge badge-danger">Deactive</span>
+            }
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new {@class = "btn btn-warning btn-sm"})
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-info btn-sm" })
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger btn-sm" })
         </td>
     </tr>
 }

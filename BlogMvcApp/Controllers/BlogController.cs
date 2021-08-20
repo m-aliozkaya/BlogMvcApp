@@ -27,7 +27,7 @@ namespace BlogMvcApp.Controllers
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            }s
             Blog blog = db.Blogs.Find(id);
             if (blog == null)
             {
