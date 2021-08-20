@@ -9,14 +9,27 @@ namespace BlogMvcApp.Controllers
 {
     public class HomeController : Controller
     {
+        private BlogContext context = new BlogContext();
         // GET: Home
         public ActionResult Index()
         {
-            BlogContext context = new BlogContext();
 
-            List<Blog> blogs = context.Blogs.Where(b => b.IsActive == true).ToList();
+            var blogs = context.Blogs
+                .Select(b => new BlogModel()
+                {
+                    Id = b.Id,
+                    Title = b.Title.Length > 100 ? b.Title.Substring(0, 100) + "..." : b.Title,
+                    Description = b.Description,
+                    CreatedDate = b.CreatedDate,
+                    IsActive = b.IsActive,
+                    IsValid = b.IsValid,
+                    Image = b.Image
+                })
+                .Where(b => b.IsActive == true && b.IsValid == true);
 
-            return View(blogs);
+
+
+            return View(blogs.ToList());
         }
     }
 }
