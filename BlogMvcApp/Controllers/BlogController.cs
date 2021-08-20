@@ -91,6 +91,8 @@ namespace BlogMvcApp.Controllers
             {
                 db.Entry(blog).State = EntityState.Modified;
                 db.SaveChanges();
+
+                TempData["Blog"] = blog;
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", blog.CategoryId);
