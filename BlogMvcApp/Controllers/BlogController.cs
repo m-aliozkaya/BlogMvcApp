@@ -28,7 +28,9 @@ namespace BlogMvcApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Blog blog = db.Blogs.Find(id);
+
+            Blog blog = db.Blogs.Include(b => b.Category).FirstOrDefault(b => b.Id == id);
+
             if (blog == null)
             {
                 return HttpNotFound();
@@ -83,7 +85,7 @@ namespace BlogMvcApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,Image,Content,CreatedDate,IsValid,IsActive,CategoryId")] Blog blog)
+        public ActionResult Edit([Bind(Include = "Id,CreatedDate,Title,Description,Image,Content,IsValid,IsActive,CategoryId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
