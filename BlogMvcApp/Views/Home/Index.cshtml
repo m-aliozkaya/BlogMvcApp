@@ -21,7 +21,7 @@
                         </p>
                     </div>
                     <p class="card-text">@blog.Description</p>
-                    <a href="#" class="btn btn-primary">Read More...</a>
+                    @Html.ActionLink("Read more...", "Details", "Blog", new {id = blog.Id }, new {@class = "btn btn-primary" })
                 </div>
             </div>
         }
