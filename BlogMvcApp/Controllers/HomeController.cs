@@ -15,6 +15,7 @@ namespace BlogMvcApp.Controllers
         {
 
             var blogs = context.Blogs
+                .Where(b => b.IsActive == true && b.IsValid == true)
                 .Select(b => new BlogModel()
                 {
                     Id = b.Id,
@@ -24,8 +25,7 @@ namespace BlogMvcApp.Controllers
                     IsActive = b.IsActive,
                     IsValid = b.IsValid,
                     Image = b.Image
-                })
-                .Where(b => b.IsActive == true && b.IsValid == true);
+                });
 
 
 
