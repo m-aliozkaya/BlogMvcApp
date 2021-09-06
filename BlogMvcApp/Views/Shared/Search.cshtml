@@ -1,0 +1,15 @@
+﻿
+@using (Html.BeginForm("List", "Blog", FormMethod.Get))
+{
+<div class="card p-2 mb-5 border-0">
+    <h4 class="card-title pl-3">Blog Search</h4>
+    <div class="input-group col-md-12">
+        @Html.TextBox("q", null, new {@class = "form-control" })
+        <span class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
+    </div>
+</div>
+}

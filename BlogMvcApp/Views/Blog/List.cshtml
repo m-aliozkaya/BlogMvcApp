@@ -10,17 +10,7 @@
 @Html.Partial("BlogList", Model)
 
 @section RightBar{
-    <div class="card p-2 mb-5 border-0">
-        <h4 class="card-title pl-3">Blog Search</h4>
-        <div class="input-group col-md-12">
-            <input class="form-control py-2" type="search" value="search" id="example-search-input">
-            <span class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">
-                    <i class="fa fa-search"></i>
-                </button>
-            </span>
-        </div>
-    </div>
+    @Html.Partial("Search")
 
     @{
         Html.RenderAction("CategoryList", "Category");

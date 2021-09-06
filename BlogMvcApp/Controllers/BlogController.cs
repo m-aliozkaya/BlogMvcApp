@@ -16,7 +16,7 @@ namespace BlogMvcApp.Controllers
 
         // GET: Blog
 
-        public ActionResult List(int? id)
+        public ActionResult List(int? id, string q)
         {
             var blogs = db.Blogs
                .Where(b => b.IsValid == true)
@@ -31,6 +31,11 @@ namespace BlogMvcApp.Controllers
                    Image = b.Image,
                    CategoryId = b.CategoryId
                });
+
+            if (string.IsNullOrEmpty("q") == false)
+            {
+                blogs = blogs.Where(i => i.Title.Contains(q) || i.Description.Contains(q));
+            }
 
             if (id != null)
             {
