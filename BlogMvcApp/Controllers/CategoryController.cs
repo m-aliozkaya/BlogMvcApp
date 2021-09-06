@@ -14,6 +14,11 @@ namespace BlogMvcApp.Controllers
     {
         private BlogContext db = new BlogContext();
 
+        public PartialViewResult CategoryList()
+        {
+            return PartialView(db.Categories.ToList());
+        }
+
         // GET: Categories
         public ActionResult Index()
         {

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<BlogMvcApp.Models.Category>
+
+<div class="card p-2 border-0">
+    <h4 class="card-title pl-3">Blog Categories</h4>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-6">
+                <ul class="list-unstyled pl-3">
+                    <li><a href="#">@item.Name</a></li>
+                </ul>
+            </div>
+        }
+    </div>
+</div>

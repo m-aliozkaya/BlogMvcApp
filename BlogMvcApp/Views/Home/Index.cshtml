@@ -25,7 +25,7 @@
 }
 
 @section RightBar{
-    <div class="card p-2 mb-5">
+    <div class="card p-2 mb-5 border-0">
         <h4 class="card-title pl-3">Blog Search</h4>
         <div class="input-group col-md-12">
             <input class="form-control py-2" type="search" value="search" id="example-search-input">
@@ -36,21 +36,10 @@
             </span>
         </div>
     </div>
-    <div class="card p-2">
-        <h4 class="card-title pl-3">Blog Categories</h4>
-        <div class="col-md-12">
-            <ul class="list-unstyled" style="column-count:2">
-                <li><a href="#">Category Name</a></li>
-                <li><a href="#">Category Name</a></li>
-                <li><a href="#">Category Name</a></li>
-                <li><a href="#">Category Name</a></li>
-                <li><a href="#">Category Name</a></li>
-                <li><a href="#">Category Name</a></li>
-                <li><a href="#">Category Name</a></li>
-                <li><a href="#">Category Name</a></li>
-            </ul>
-        </div>
-    </div>
+    
+    @{ 
+        Html.RenderAction("CategoryList", "Category");
+    }
 }
 
 
